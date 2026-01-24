@@ -6,9 +6,31 @@ import { Button } from "@/components/ui/button";
 import { Heart, Users, Lightbulb } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About | LLJ Copywriting",
+  title: "About",
   description:
-    "Meet Larissa Ray, a copywriter who specializes in translating complex health topics into content that worried families actually understand.",
+    "Meet Larissa Ray, a copywriter who specializes in translating complex health topics into content that worried families actually understand. Senior living and healthcare content expert.",
+  openGraph: {
+    title: "About Larissa Ray | LLJ Copywriting",
+    description:
+      "Meet Larissa Ray, a copywriter who specializes in translating complex health topics into content that worried families actually understand.",
+    url: "https://lljcopywriting.com/about",
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  mainEntity: {
+    "@type": "Person",
+    name: "Larissa Ray",
+    jobTitle: "Health & Senior Living Copywriter",
+    description:
+      "Copywriter specializing in health and senior living content that helps families understand complex medical topics.",
+    worksFor: {
+      "@type": "Organization",
+      name: "LLJ Copywriting, LLC",
+    },
+  },
 };
 
 const values = [
@@ -35,6 +57,10 @@ const values = [
 export default function AboutPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Navigation />
       <main>
         {/* Hero */}

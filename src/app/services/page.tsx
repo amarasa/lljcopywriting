@@ -20,9 +20,80 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Services | LLJ Copywriting",
+  title: "Services",
   description:
-    "Website copy, articles, patient education materials, and more for health and senior living businesses.",
+    "Copywriting services for health and senior living businesses: website copy, articles, patient education materials, healthcare content, and brand messaging.",
+  openGraph: {
+    title: "Copywriting Services | LLJ Copywriting",
+    description:
+      "Website copy, articles, patient education materials, and more for health and senior living businesses.",
+    url: "https://lljcopywriting.com/services",
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: "Copywriting Services",
+  provider: {
+    "@type": "ProfessionalService",
+    name: "LLJ Copywriting",
+    url: "https://lljcopywriting.com",
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Copywriting Services",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Website Copy",
+          description: "Clear, compassionate website copy for health and senior living businesses.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Articles & Blog Content",
+          description: "Educational content that positions you as a trusted resource.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Patient Education Materials",
+          description: "Complex medical information translated into language patients can understand.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Senior Living Content",
+          description: "Specialized content for memory care, assisted living, and independent living communities.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Healthcare Practice Content",
+          description: "Content that helps patients understand your services and approach to care.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Brand Messaging",
+          description: "Foundational messaging that captures who you are and why you matter.",
+        },
+      },
+    ],
+  },
 };
 
 const services = [
@@ -148,6 +219,10 @@ const processSteps = [
 export default function ServicesPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Navigation />
       <main>
         {/* Hero */}
