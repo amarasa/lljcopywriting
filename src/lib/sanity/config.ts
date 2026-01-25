@@ -1,5 +1,5 @@
 export const sanityConfig = {
-  projectId: "fml8zle9",
+  projectId: "698ex5ue",
   dataset: "production",
   apiVersion: "2024-01-01",
   useCdn: process.env.NODE_ENV === "production",

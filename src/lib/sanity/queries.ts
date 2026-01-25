@@ -1,29 +1,19 @@
 import { groq } from "next-sanity";
 
-// Larissa Ray's author ID - only show her posts on this site
-const AUTHOR_ID = "a3af9557-2209-47f7-962b-afbd7689a883";
-
 export const blogPostsQuery = groq`
-  *[_type == "blogPost" && status == "published" && author._ref == "${AUTHOR_ID}"] | order(publishedAt desc) {
+  *[_type == "blogPost" && status == "published"] | order(publishedAt desc) {
     _id,
     title,
     slug,
     excerpt,
     publishedAt,
-    readingTime,
-    headerStyle,
-    "author": author->{
-      name,
-      slug,
-      image,
-      role
+    featuredImage,
+    "categories": categories[]->{
+      _id,
+      title,
+      slug
     },
-    "category": category->{
-      name,
-      slug,
-      color
-    },
-    tags
+    status
   }
 `;
 
@@ -33,56 +23,31 @@ export const blogPostBySlugQuery = groq`
     title,
     slug,
     excerpt,
-    content,
+    body,
+    featuredImage,
     publishedAt,
-    updatedAt,
-    readingTime,
-    headerStyle,
-    tableOfContents,
-    faqs,
-    seo,
-    "author": author->{
-      name,
-      slug,
-      image,
-      role,
-      bio,
-      socialLinks
-    },
-    "category": category->{
-      name,
-      slug,
-      color
-    },
-    tags,
-    "relatedPosts": relatedPosts[]->{
+    "categories": categories[]->{
       _id,
       title,
-      slug,
-      excerpt,
-      publishedAt,
-      "category": category->{
-        name,
-        slug,
-        color
-      }
-    }
+      slug
+    },
+    status,
+    seoTitle,
+    seoDescription
   }
 `;
 
 export const blogPostSlugsQuery = groq`
-  *[_type == "blogPost" && status == "published" && author._ref == "${AUTHOR_ID}"] {
+  *[_type == "blogPost" && status == "published"] {
     "slug": slug.current
   }
 `;
 
 export const categoriesQuery = groq`
-  *[_type == "category"] | order(order asc) {
+  *[_type == "category"] | order(title asc) {
     _id,
-    name,
+    title,
     slug,
-    description,
-    color,
-    icon
+    description
   }
 `;

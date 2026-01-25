@@ -5,7 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { client, blogPostsQuery, type BlogPost } from "@/lib/sanity";
-import { Calendar, Clock } from "lucide-react";
+import { Calendar } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -88,12 +88,12 @@ export default async function BlogPage() {
                     >
                       <Card className="h-full transition-shadow hover:shadow-lg">
                         <CardHeader className="pb-3">
-                          {post.category && (
+                          {post.categories && post.categories.length > 0 && (
                             <Badge
                               variant="secondary"
                               className="w-fit mb-2 text-xs"
                             >
-                              {post.category.name}
+                              {post.categories[0].title}
                             </Badge>
                           )}
                           <h2 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
@@ -114,15 +114,6 @@ export default async function BlogPage() {
                                 {formatDate(post.publishedAt)}
                               </time>
                             </span>
-                            {post.readingTime && (
-                              <span className="flex items-center gap-1">
-                                <Clock
-                                  className="h-3.5 w-3.5"
-                                  aria-hidden="true"
-                                />
-                                {post.readingTime} min read
-                              </span>
-                            )}
                           </div>
                         </CardContent>
                       </Card>
