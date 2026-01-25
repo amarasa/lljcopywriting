@@ -7,6 +7,7 @@ export default defineConfig({
   title: "LLJ Copywriting",
   projectId: "698ex5ue",
   dataset: "production",
+  basePath: "/studio",
   plugins: [structureTool()],
   schema: {
     types: schemaTypes,
