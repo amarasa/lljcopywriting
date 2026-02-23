@@ -1,10 +1,16 @@
 import { ServerClient } from "postmark";
 
-if (!process.env.POSTMARK_API_TOKEN) {
-  throw new Error("POSTMARK_API_TOKEN environment variable is required");
-}
+let postmarkClient: ServerClient | null = null;
 
-const postmarkClient = new ServerClient(process.env.POSTMARK_API_TOKEN);
+function getPostmarkClient(): ServerClient {
+  if (!postmarkClient) {
+    if (!process.env.POSTMARK_API_TOKEN) {
+      throw new Error("POSTMARK_API_TOKEN environment variable is required");
+    }
+    postmarkClient = new ServerClient(process.env.POSTMARK_API_TOKEN);
+  }
+  return postmarkClient;
+}
 
 export interface EmailData {
   to: string;
@@ -21,7 +27,7 @@ export async function sendEmail(emailData: EmailData) {
   const bccEmail = emailData.bcc || process.env.NOTIFY_BCC_EMAIL;
 
   try {
-    const response = await postmarkClient.sendEmail({
+    const response = await getPostmarkClient().sendEmail({
       From: fromEmail,
       To: emailData.to,
       Bcc: bccEmail,
