@@ -23,6 +23,9 @@ export const metadata: Metadata = {
   title: "Services",
   description:
     "Copywriting services for health and senior living businesses: website copy, articles, patient education materials, healthcare content, and brand messaging.",
+  alternates: {
+    canonical: "/services",
+  },
   openGraph: {
     title: "Copywriting Services | LLJ Copywriting",
     description:

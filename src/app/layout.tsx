@@ -68,6 +68,9 @@ export const metadata: Metadata = {
       "I help health and senior living businesses explain complex topics in ways that build trust with worried families and aging adults.",
     images: ["/og-image.png"],
   },
+  alternates: {
+    canonical: "/",
+  },
   robots: {
     index: true,
     follow: true,

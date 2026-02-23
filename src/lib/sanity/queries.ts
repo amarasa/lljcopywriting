@@ -39,7 +39,9 @@ export const blogPostBySlugQuery = groq`
 
 export const blogPostSlugsQuery = groq`
   *[_type == "blogPost" && status == "published"] {
-    "slug": slug.current
+    "slug": slug.current,
+    publishedAt,
+    _updatedAt
   }
 `;
 

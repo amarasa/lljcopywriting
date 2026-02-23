@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Get in touch to discuss your health or senior living copywriting project. I respond to all inquiries within 1-2 business days.",
+  alternates: {
+    canonical: "/contact",
+  },
   openGraph: {
     title: "Contact | LLJ Copywriting",
     description:

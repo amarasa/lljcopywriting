@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "Meet Larissa Ray, a copywriter who specializes in translating complex health topics into content that worried families actually understand. Senior living and healthcare content expert.",
+  alternates: {
+    canonical: "/about",
+  },
   openGraph: {
     title: "About Larissa Ray | LLJ Copywriting",
     description:

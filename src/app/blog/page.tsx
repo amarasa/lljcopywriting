@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   title: "Blog",
   description:
     "Insights on senior living marketing, healthcare communication, and patient education content. Practical tips for connecting with families and building trust.",
+  alternates: {
+    canonical: "/blog",
+  },
   openGraph: {
     title: "Blog | LLJ Copywriting",
     description:
